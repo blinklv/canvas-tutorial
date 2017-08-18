@@ -1,0 +1,22 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+header {
+  text-align: center;
+  font-family: monospace;
+  overflow: auto;
+
+  p {
+    color: gray;
+  }
+}
+
+h1 {
+  font-size: 36px;
+}
