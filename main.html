@@ -5,6 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="normalize.css">
+    <link rel="stylesheet" type="text/css" href="highlight/styles/default.css">
     <link rel="stylesheet" type="text/css" href="main.css">
     <script src="highlight/highlight.pack.js" defer></script>
     <script src="main.js" defer></script>
@@ -24,8 +25,13 @@
           <canvas id="two-intersecting-rectangles" width="478" height="292"></canvas>
         </div>
         <div style="flex-grow: 1">
-          <div class="description"> 
-          </div>
+            <pre class="description"><code class="javascript">
+    ctx.fillStyle = "rgb(200, 0, 0)";
+    ctx.fillRect(50, 50, 150, 150);
+    
+    ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
+    ctx.fillRect(100, 100, 150, 150);
+            </code></pre>
         </div>
       </div>
     </section>
