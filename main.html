@@ -37,6 +37,7 @@
         </div>
       </div>
     </section>
+
     <section class="note">
       <div class="sub-title">
         <h3>Nested square</h3>
@@ -69,6 +70,37 @@
         </div>
       </div>
     </section>
+
+    <section class="note">
+      <div class="sub-title">
+        <h3>Two triangles</h3>
+      </div>
+      <div class="container">
+        <div style="flex-grow: 1">
+          <canvas id="two-triangles" width="478" height="292">
+          </canvas>
+        </div>
+        <div style="flex-grow: 1">
+            <pre class="description"><code class="javascript">
+    // Filled triangle
+    ctx.beginPath();
+    ctx.moveTo(129, 36);
+    ctx.lineTo(329, 36);
+    ctx.lineTo(129, 236);
+    ctx.fill();
+
+    // Stroke triangle
+    ctx.beginPath();
+    ctx.moveTo(339, 46);
+    ctx.lineTo(339, 246);
+    ctx.lineTo(139, 246);
+    ctx.closePath();
+    ctx.stroke();
+            </code></pre>
+        </div>
+      </div>
+    </section>
+
   </main>
   <footer>
   </footer>

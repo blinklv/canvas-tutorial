@@ -40,6 +40,27 @@
     }
   })();
 
+  // Two triangles
+  (function() {
+    var ctx = document.getElementById("two-triangles").getContext("2d");
+    
+    // Filled triangle
+    ctx.beginPath();
+    ctx.moveTo(129, 36);
+    ctx.lineTo(329, 36);
+    ctx.lineTo(129, 236);
+    ctx.fill();
+
+    // Stroke triangle
+    ctx.beginPath();
+    ctx.moveTo(339, 46);
+    ctx.lineTo(339, 246);
+    ctx.lineTo(139, 246);
+    ctx.closePath();
+    ctx.stroke();
+
+  })();
+
 })();
 
 
