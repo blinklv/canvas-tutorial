@@ -101,6 +101,37 @@
       </div>
     </section>
 
+    <section class="note">
+      <div class="sub-title">
+        <h3>Arcs</h3>
+      </div>
+      <div class="container">
+        <div style="flex-grow: 1">
+          <canvas id="arcs" width="478" height="292">
+          </canvas>
+        </div>
+        <div style="flex-grow: 1">
+            <pre class="description"><code class="javascript">
+    var [r, theta] = [30, Math.PI / 4];
+    for ( let i = 0; i < 4; ++i ) {
+      for ( let j = 0; j < 6; ++j ) {
+        var [x, y, end] = [60 + j * 70, 40 + i * 70, theta * (j+1)];
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, end, i % 2 !== 0);
+
+
+        if ( i > 1 ) {
+          ctx.fill();
+        } else {
+          ctx.stroke();
+        }
+      }
+    }
+            </code></pre>
+        </div>
+      </div>
+    </section>
+
   </main>
   <footer>
   </footer>

@@ -61,6 +61,26 @@
 
   })();
 
+  // Arcs
+  (function() {
+    var ctx = document.getElementById("arcs").getContext("2d");
+    var [r, theta] = [30, Math.PI / 4];
+    for ( let i = 0; i < 4; ++i ) {
+      for ( let j = 0; j < 6; ++j ) {
+        var [x, y, end] = [60 + j * 70, 40 + i * 70, theta * (j+1)];
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, end, i % 2 !== 0);
+
+
+        if ( i > 1 ) {
+          ctx.fill();
+        } else {
+          ctx.stroke();
+        }
+      }
+    }
+  })();
+
 })();
 
 
