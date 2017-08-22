@@ -18,7 +18,7 @@
   <main>
     <section class="note">
       <div class="sub-title">
-        <h3>Two intersecting rectangles</h3>
+        <h3>Two Intersecting Rectangles</h3>
       </div>
       <div class="container">
         <div style="flex-grow: 1">
@@ -40,7 +40,7 @@
 
     <section class="note">
       <div class="sub-title">
-        <h3>Nested square</h3>
+        <h3>Nested Square</h3>
       </div>
       <div class="container">
         <div style="flex-grow: 1">
@@ -73,7 +73,7 @@
 
     <section class="note">
       <div class="sub-title">
-        <h3>Two triangles</h3>
+        <h3>Two Triangles</h3>
       </div>
       <div class="container">
         <div style="flex-grow: 1">
@@ -127,6 +127,38 @@
         }
       }
     }
+            </code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="note">
+      <div class="sub-title">
+        <h3>Rounded Rect</h3>
+      </div>
+      <div class="container">
+        <div style="flex-grow: 1">
+          <canvas id="rounded-rect" width="478" height="292">
+          </canvas>
+        </div>
+        <div style="flex-grow: 1">
+            <pre class="description"><code class="javascript">
+    function roundedRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x, y + r);
+      ctx.lineTo(x, y + h - r);
+      ctx.arcTo(x, y + h, x + r, y + h, r);
+      ctx.lineTo(x + w - r, y + h);
+      ctx.arcTo(x + w, y + h, x + w, y + h - r, r);
+      ctx.lineTo(x + w, y + r);
+      ctx.arcTo(x + w, y, x + w - r, y, r);
+      ctx.lineTo(x + r, y);
+      ctx.arcTo(x, y, x, y + r, r);
+      ctx.stroke();
+    }
+
+    roundedRect(ctx, 50, 100, 200, 100, 10);
+    roundedRect(ctx, 300, 50, 100, 200, 20);
             </code></pre>
         </div>
       </div>

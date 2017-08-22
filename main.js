@@ -71,7 +71,6 @@
         ctx.beginPath();
         ctx.arc(x, y, r, 0, end, i % 2 !== 0);
 
-
         if ( i > 1 ) {
           ctx.fill();
         } else {
@@ -81,6 +80,26 @@
     }
   })();
 
+  // Rounded Rect
+  (function() {
+    function roundedRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x, y + r);
+      ctx.lineTo(x, y + h - r);
+      ctx.arcTo(x, y + h, x + r, y + h, r);
+      ctx.lineTo(x + w - r, y + h);
+      ctx.arcTo(x + w, y + h, x + w, y + h - r, r);
+      ctx.lineTo(x + w, y + r);
+      ctx.arcTo(x + w, y, x + w - r, y, r);
+      ctx.lineTo(x + r, y);
+      ctx.arcTo(x, y, x, y + r, r);
+      ctx.stroke();
+    }
+
+    var ctx = document.getElementById("rounded-rect").getContext("2d");
+    roundedRect(ctx, 50, 100, 200, 100, 10);
+    roundedRect(ctx, 300, 50, 100, 200, 20);
+  })();
 })();
 
 
