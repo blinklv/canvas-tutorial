@@ -172,6 +172,30 @@
     }
   }) ();
 
+  // Semi Transparent Rectangle
+  (function() {
+    var ctx = document.getElementById("semi-transparent-rectangle").getContext("2d");
+
+    // draw background
+    ctx.fillStyle = 'rgb(255, 221, 0)';
+    ctx.fillRect(150, 75, 150, 37.5);
+    ctx.fillStyle = 'rgb(102, 204, 0)';
+    ctx.fillRect(150, 112.5, 150, 37.5);
+    ctx.fillStyle = 'rgb(0, 153, 255)';
+    ctx.fillRect(150, 150, 150, 37.5);
+    ctx.fillStyle = 'rgb(255, 51, 0)';
+    ctx.fillRect(150, 187.5, 150, 37.5);
+
+    // draw semi transparent rectangles
+    for ( let i = 0; i < 10; ++i ) {
+      ctx.fillStyle = "rgba(255, 255, 255, " + ( i + 1 ) / 10 + ")";
+      for ( let j = 0; j < 4; ++j ) {
+        ctx.fillRect(155 + i * 14, 80 + j * 37.5, 14, 27.5);
+      }
+    }
+
+  }) ();
+
 })();
 
 

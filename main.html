@@ -279,6 +279,39 @@
       </div>
     </section>
 
+    <section class="note">
+      <div class="sub-title">
+        <h3>Semi Transparent Rectangle</h3>
+      </div>
+      <div class="container">
+        <div style="flex-grow: 1">
+          <canvas id="semi-transparent-rectangle" width="478" height="292">
+          </canvas>
+        </div>
+        <div style="flex-grow: 1">
+            <pre class="description"><code class="javascript">
+    // draw background
+    ctx.fillStyle = 'rgb(255, 221, 0)';
+    ctx.fillRect(150, 75, 150, 37.5);
+    ctx.fillStyle = 'rgb(102, 204, 0)';
+    ctx.fillRect(150, 112.5, 150, 37.5);
+    ctx.fillStyle = 'rgb(0, 153, 255)';
+    ctx.fillRect(150, 150, 150, 37.5);
+    ctx.fillStyle = 'rgb(255, 51, 0)';
+    ctx.fillRect(150, 187.5, 150, 37.5);
+
+    // draw semi transparent rectangles
+    for ( let i = 0; i < 10; ++i ) {
+      ctx.fillStyle = "rgba(255, 255, 255, " + ( i + 1 ) / 10 + ")";
+      for ( let j = 0; j < 4; ++j ) {
+        ctx.fillRect(155 + i * 14, 80 + j * 37.5, 14, 27.5);
+      }
+    }
+            </code></pre>
+        </div>
+      </div>
+    </section>
+
   </main>
   <footer>
   </footer>
