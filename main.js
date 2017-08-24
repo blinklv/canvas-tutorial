@@ -120,6 +120,18 @@
     ctx.fill(circle);
     ctx.stroke(triangle);
   })();
+
+  // Rectangle Grid
+  (function() {
+    var ctx = document.getElementById("rectangle-grid").getContext("2d");
+    for ( let i = 0; i < 10; ++i ) {
+      for ( let j = 0; j < 10; ++j ) {
+        ctx.fillStyle = "rgb(" + Math.floor(255 - 25 * i) + "," + 
+          Math.floor(255 - 25 * j) + ", 0)";
+        ctx.fillRect(114 + j * 25, 25 + i * 25, 25, 25);
+      }
+    }
+  }) ();
 })();
 
 
