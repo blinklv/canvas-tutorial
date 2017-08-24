@@ -164,6 +164,38 @@
       </div>
     </section>
 
+    <section class="note">
+      <div class="sub-title">
+        <h3>Path2D Example</h3>
+      </div>
+      <div class="container">
+        <div style="flex-grow: 1">
+          <canvas id="path2d-example" width="478" height="292">
+          </canvas>
+        </div>
+        <div style="flex-grow: 1">
+            <pre class="description"><code class="javascript">
+    var rectangle = new Path2D();
+    rectangle.rect(20, 20, 100, 50);
+
+    var circle = new Path2D();
+    circle.arc(150, 150, 50, 0, 2 * Math.PI);
+
+    var triangle = new Path2D();
+    triangle.moveTo(300, 50);
+    triangle.lineTo(200, 200);
+    triangle.lineTo(400, 200);
+    triangle.closePath();
+    
+    var ctx = document.getElementById("path2d-example").getContext("2d");
+    ctx.stroke(rectangle);
+    ctx.fill(circle);
+    ctx.stroke(triangle);
+            </code></pre>
+        </div>
+      </div>
+    </section>
+
   </main>
   <footer>
   </footer>

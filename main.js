@@ -3,7 +3,7 @@
 // Author: blinklv <blinklv@icloud.com>
 // Create Time: 2017-08-18
 // Maintainer: blinklv <blinklv@icloud.com>
-// Last Change: 2017-08-22
+// Last Change: 2017-08-24
 
 (function() {
   hljs.initHighlightingOnLoad();
@@ -99,6 +99,26 @@
     var ctx = document.getElementById("rounded-rect").getContext("2d");
     roundedRect(ctx, 50, 100, 200, 100, 10);
     roundedRect(ctx, 300, 50, 100, 200, 20);
+  })();
+
+  // Path2D example 
+  (function() {
+    var rectangle = new Path2D();
+    rectangle.rect(20, 20, 100, 50);
+
+    var circle = new Path2D();
+    circle.arc(150, 150, 50, 0, 2 * Math.PI);
+
+    var triangle = new Path2D();
+    triangle.moveTo(300, 50);
+    triangle.lineTo(200, 200);
+    triangle.lineTo(400, 200);
+    triangle.closePath();
+    
+    var ctx = document.getElementById("path2d-example").getContext("2d");
+    ctx.stroke(rectangle);
+    ctx.fill(circle);
+    ctx.stroke(triangle);
   })();
 })();
 
