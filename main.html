@@ -243,6 +243,42 @@
       </div>
     </section>
 
+    <section class="note">
+      <div class="sub-title">
+        <h3>Semi Transparent Circle</h3>
+      </div>
+      <div class="container">
+        <div style="flex-grow: 1">
+          <canvas id="semi-transparent-circle" width="478" height="292">
+          </canvas>
+        </div>
+        <div style="flex-grow: 1">
+            <pre class="description"><code class="javascript">
+    // draw background
+    ctx.fillStyle = "#FD0";
+    ctx.fillRect(150, 75, 75, 75);
+    ctx.fillStyle = "#6C0";
+    ctx.fillRect(225, 75, 75, 75);
+    ctx.fillStyle = "#09F";
+    ctx.fillRect(150, 150, 75, 75);
+    ctx.fillStyle = "#F30";
+    ctx.fillRect(225, 150, 75, 75);
+    ctx.fillStyle = "#FFF";
+
+    // set transparency value
+    ctx.globalAlpha = 0.2;
+
+    // draw semi transparent circles
+    for ( let i = 0; i < 7; ++i ) {
+      ctx.beginPath();
+      ctx.arc(225, 150, 10 + 10 * i, 0, 2 * Math.PI);
+      ctx.fill();
+    }
+            </code></pre>
+        </div>
+      </div>
+    </section>
+
   </main>
   <footer>
   </footer>
