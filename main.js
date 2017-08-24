@@ -196,6 +196,18 @@
 
   }) ();
 
+  // Zebra Crossing
+  (function() {
+    var ctx = document.getElementById("zebra-crossing").getContext("2d");
+    for ( let [i, n] = [0, 20] ; i < n; ++i ) {
+      ctx.lineWidth = 1 + i;
+      ctx.beginPath();
+      ctx.moveTo(5 + i * (n+4), 6);
+      ctx.lineTo(5 + i * (n+4), 286);
+      ctx.stroke();
+    }
+  }) ();
+  
 })();
 
 
