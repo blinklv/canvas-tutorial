@@ -132,6 +132,19 @@
       }
     }
   }) ();
+
+  // Color Circle
+  (function() {
+    var ctx = document.getElementById("color-circle").getContext("2d");
+    for ( let i = 0; i < 10; ++i ) {
+      for ( let j = 0; j < 10; ++j ) {
+        ctx.strokeStyle = "rgb(" + Math.floor(255 - 12.5 * (i + j)) + ", " + Math.floor(255 - 25 * i) + ", " + Math.floor(255 - 25 * j) + ")";
+        ctx.beginPath();
+        ctx.arc(114 + j * 25, 25 + i * 25, 12.5, 0, 2 * Math.PI);
+        ctx.stroke();
+      }
+    }
+  }) ();
 })();
 
 

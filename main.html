@@ -218,6 +218,31 @@
         </div>
       </div>
     </section>
+
+    <section class="note">
+      <div class="sub-title">
+        <h3>Color Circle</h3>
+      </div>
+      <div class="container">
+        <div style="flex-grow: 1">
+          <canvas id="color-circle" width="478" height="292">
+          </canvas>
+        </div>
+        <div style="flex-grow: 1">
+            <pre class="description"><code class="javascript">
+    for ( let i = 0; i < 10; ++i ) {
+      for ( let j = 0; j < 10; ++j ) {
+        ctx.strokeStyle = "rgb(" + Math.floor(255 - 12.5 * (i + j)) + ", " + Math.floor(255 - 25 * i) + ", " + Math.floor(255 - 25 * j) + ")";
+        ctx.beginPath();
+        ctx.arc(114 + j * 25, 25 + i * 25, 12.5, 0, 2 * Math.PI);
+        ctx.stroke();
+      }
+    }
+            </code></pre>
+        </div>
+      </div>
+    </section>
+
   </main>
   <footer>
   </footer>
