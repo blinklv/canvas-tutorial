@@ -3,7 +3,7 @@
 // Author: blinklv <blinklv@icloud.com>
 // Create Time: 2017-08-18
 // Maintainer: blinklv <blinklv@icloud.com>
-// Last Change: 2017-08-24
+// Last Change: 2017-08-28
 
 (function() {
   hljs.initHighlightingOnLoad();
@@ -205,6 +205,24 @@
       ctx.moveTo(5 + i * (n+4), 6);
       ctx.lineTo(5 + i * (n+4), 286);
       ctx.stroke();
+    }
+  }) ();
+
+  // Zig Zag
+  (function() {
+    var ctx = document.getElementById("zig-zag").getContext("2d");
+    var i = 0;
+    ctx.lineWidth = 20;
+    for ( let lineJoin of ["round", "bevel", "miter"] ) {
+      ctx.lineJoin = lineJoin;
+      ctx.beginPath();
+      ctx.moveTo(150 - 5, 100 + 5 + i * 40);
+      ctx.lineTo(150 + 35, 100 + 45 + i * 40);
+      ctx.lineTo(150 + 75, 100 + 5 + i * 40);
+      ctx.lineTo(150 + 115, 100 + 45 + i * 40);
+      ctx.lineTo(150 + 155, 100 + 5 + i * 40);
+      ctx.stroke();
+      ++i;
     }
   }) ();
   

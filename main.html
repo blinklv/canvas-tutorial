@@ -307,6 +307,7 @@
         ctx.fillRect(155 + i * 14, 80 + j * 37.5, 14, 27.5);
       }
     }
+
             </code></pre>
         </div>
       </div>
@@ -329,6 +330,35 @@
       ctx.moveTo(5 + i * (n+4), 6);
       ctx.lineTo(5 + i * (n+4), 286);
       ctx.stroke();
+    }
+            </code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="note">
+      <div class="sub-title">
+        <h3>Zig Zag</h3>
+      </div>
+      <div class="container">
+        <div style="flex-grow: 1">
+          <canvas id="zig-zag" width="478" height="292">
+          </canvas>
+        </div>
+        <div style="flex-grow: 1">
+            <pre class="description"><code class="javascript">
+    var i = 0;
+    ctx.lineWidth = 20;
+    for ( let lineJoin of ["round", "bevel", "miter"] ) {
+      ctx.lineJoin = lineJoin;
+      ctx.beginPath();
+      ctx.moveTo(150 - 5, 100 + 5 + i * 40);
+      ctx.lineTo(150 + 35, 100 + 45 + i * 40);
+      ctx.lineTo(150 + 75, 100 + 5 + i * 40);
+      ctx.lineTo(150 + 115, 100 + 45 + i * 40);
+      ctx.lineTo(150 + 155, 100 + 5 + i * 40);
+      ctx.stroke();
+      ++i;
     }
             </code></pre>
         </div>
