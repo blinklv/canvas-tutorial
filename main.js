@@ -3,7 +3,7 @@
 // Author: blinklv <blinklv@icloud.com>
 // Create Time: 2017-08-18
 // Maintainer: blinklv <blinklv@icloud.com>
-// Last Change: 2017-08-28
+// Last Change: 2017-08-30
 
 (function() {
   hljs.initHighlightingOnLoad();
@@ -224,6 +224,32 @@
       ctx.stroke();
       ++i;
     }
+  }) ();
+
+  // Dash Square
+  (function() {
+    var canvas = document.getElementById("dash-square");
+    var ctx = canvas.getContext("2d");
+    var offset = 0;
+    var [x, y] = [(canvas.width - 200) / 2, (canvas.height - 200) / 2];
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.setLineDash([4, 2]);
+      ctx.lineDashOffset = -offset;
+      ctx.strokeRect(x, y, 200, 200);
+    }
+
+    function march() {
+      ++offset;
+      if ( offset > 33 ) {
+        offset = 0;
+      }
+      draw();
+      setTimeout(march, 20);
+    }
+
+    march();
   }) ();
   
 })();

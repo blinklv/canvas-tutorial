@@ -365,6 +365,44 @@
       </div>
     </section>
 
+    <section class="note">
+      <div class="sub-title">
+        <h3>Dash Square</h3>
+      </div>
+      <div class="container">
+        <div style="flex-grow: 1">
+          <canvas id="dash-square" width="478" height="292">
+          </canvas>
+        </div>
+        <div style="flex-grow: 1">
+            <pre class="description"><code class="javascript">
+    var canvas = document.getElementById("dash-square");
+    var ctx = canvas.getContext("2d");
+    var offset = 0;
+    var [x, y] = [(canvas.width - 200) / 2, (canvas.height - 200) / 2];
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.setLineDash([4, 2]);
+      ctx.lineDashOffset = -offset;
+      ctx.strokeRect(x, y, 200, 200);
+    }
+
+    function march() {
+      ++offset;
+      if ( offset > 33 ) {
+        offset = 0;
+      }
+      draw();
+      setTimeout(march, 20);
+    }
+
+    march();
+            </code></pre>
+        </div>
+      </div>
+    </section>
+
   </main>
   <footer>
   </footer>
