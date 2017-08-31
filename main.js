@@ -3,7 +3,7 @@
 // Author: blinklv <blinklv@icloud.com>
 // Create Time: 2017-08-18
 // Maintainer: blinklv <blinklv@icloud.com>
-// Last Change: 2017-08-30
+// Last Change: 2017-08-31
 
 (function() {
   hljs.initHighlightingOnLoad();
@@ -250,6 +250,31 @@
     }
 
     march();
+  }) ();
+
+  // Line Gradient
+  (function() {
+    var canvas = document.getElementById("linear-gradient");
+    var ctx = canvas.getContext("2d");
+    var [x, y] = [(canvas.width - 200) / 2, (canvas.height - 200) / 2];
+
+    // fill gradient
+    var fillGrad = ctx.createLinearGradient(0, y, 0, y + 200);
+    fillGrad.addColorStop(0, '#00ABEB');
+    fillGrad.addColorStop(0.5, '#fff');
+    fillGrad.addColorStop(0.5, '#26C000');
+    fillGrad.addColorStop(1, '#fff');
+
+    // stroke gradient
+    var strokeGrad = ctx.createLinearGradient(0, y + 50, 0, y + 150);
+    strokeGrad.addColorStop(0.5, "black");
+    strokeGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
+
+    ctx.fillStyle = fillGrad;
+    ctx.strokeStyle = strokeGrad;
+
+    ctx.fillRect(x, y, 200, 200);
+    ctx.strokeRect(x + 50, y + 50, 100, 100);
   }) ();
   
 })();
