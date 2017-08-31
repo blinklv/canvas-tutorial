@@ -342,7 +342,7 @@
     img.onload = function() {
       ctx.fillStyle = ctx.createPattern(img, "repeat");
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
+    };
   }) ();
   
   // Shadow
@@ -369,6 +369,47 @@
     ctx.font = "48px monospace";
     ctx.fillText("Hello", x + 10, y + 50);
     ctx.strokeText("World", x + 160, y + 50);
+  }) ();
+
+  // Art Gallery
+  (function() {
+    var canvas = document.getElementById("art-gallery");
+    var ctx = canvas.getContext("2d");
+    var [dx, dy] = [(canvas.width - 132 * 4) / 5, (canvas.height - 150 * 2) / 3];
+    var paintings = [
+      "https://mdn.mozillademos.org/files/5399/gallery_1.jpg",
+      "https://mdn.mozillademos.org/files/5401/gallery_2.jpg",
+      "https://mdn.mozillademos.org/files/5403/gallery_3.jpg",
+      "https://mdn.mozillademos.org/files/5405/gallery_4.jpg",
+      "https://mdn.mozillademos.org/files/5407/gallery_5.jpg",
+      "https://mdn.mozillademos.org/files/5409/gallery_6.jpg",
+      "https://mdn.mozillademos.org/files/5411/gallery_7.jpg",
+      "https://mdn.mozillademos.org/files/5413/gallery_8.jpg"
+    ];
+
+    var background = new Image();
+    background.src = "https://mdn.mozillademos.org/files/5415/bg_gallery.png";
+    background.onload = function() {
+      ctx.fillStyle = ctx.createPattern(background, "repeat");
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      paintings.forEach(function(src, i) {
+        let [x, y] = [i % 4, Math.floor(i/4)];
+
+        var painting = new Image();
+        painting.src = src;
+        painting.onload = function() {
+          var [offsetX, offsetY] = [(x + 1) * dx + x * 132 + 15, (y + 1) * dy + y * 150 + 20];
+          ctx.drawImage(painting, offsetX, offsetY);
+          var frame = new Image();
+          frame.src = "https://mdn.mozillademos.org/files/242/Canvas_picture_frame.png";
+          frame.onload = function() {
+            var [offsetX, offsetY] = [(x + 1) * dx + x * 132, (y + 1) * dy + y * 150];
+            ctx.drawImage(frame, offsetX, offsetY);
+          };
+        };
+      });
+    };
   }) ();
 })();
 
