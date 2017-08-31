@@ -345,6 +345,21 @@
     }
   }) ();
   
+  // Shadow
+  (function() {
+    var canvas = document.getElementById("shadow");
+    var ctx = canvas.getContext("2d");
+    var [x, y] = [(canvas.width - 200) / 2, (canvas.height - 200) / 2];
+    
+    ctx.shadowOffsetX = 5;
+    ctx.shadowOffsetY = 5;
+    ctx.shadowBlur = 5;
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+
+    ctx.fillStyle = "#dd4a68";
+    ctx.fillRect(x, y, 200, 200);
+  }) ();
+
 })();
 
 
