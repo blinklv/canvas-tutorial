@@ -360,6 +360,16 @@
     ctx.fillRect(x, y, 200, 200);
   }) ();
 
+  // Text
+  (function() {
+    var canvas = document.getElementById("text");
+    var ctx = canvas.getContext("2d");
+    var [x, y] = [(canvas.width - 300) / 2, (canvas.height - 100) / 2];
+    
+    ctx.font = "48px monospace";
+    ctx.fillText("Hello", x + 10, y + 50);
+    ctx.strokeText("World", x + 160, y + 50);
+  }) ();
 })();
 
 

@@ -559,6 +559,29 @@
       </div>
     </section>
 
+    <section class="note">
+      <div class="sub-title">
+        <h3>Text</h3>
+      </div>
+      <div class="container">
+        <div style="flex-grow: 1">
+          <canvas id="text" width="478" height="292">
+          </canvas>
+        </div>
+        <div style="flex-grow: 1">
+            <pre class="description"><code class="javascript">
+    var canvas = document.getElementById("text");
+    var ctx = canvas.getContext("2d");
+    var [x, y] = [(canvas.width - 300) / 2, (canvas.height - 100) / 2];
+    
+    ctx.font = "48px monospace";
+    ctx.fillText("Hello", x + 10, y + 50);
+    ctx.strokeText("World", x + 160, y + 50);
+            </code></pre>
+        </div>
+      </div>
+    </section>
+
   </main>
   <footer>
   </footer>
