@@ -331,6 +331,19 @@
     auxRadialGrad(95, 15, 15, 102, 20, 40);
     auxRadialGrad(0, 150, 50, 0, 140, 90);
   }) ();
+
+  // Pattern
+  (function() {
+    var canvas = document.getElementById("pattern");
+    var ctx = canvas.getContext("2d");
+
+    var img = new Image();
+    img.src = "img/pattern.jpg";
+    img.onload = function() {
+      ctx.fillStyle = ctx.createPattern(img, "repeat");
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+  }) ();
   
 })();
 

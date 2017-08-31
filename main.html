@@ -507,6 +507,31 @@
       </div>
     </section>
 
+    <section class="note">
+      <div class="sub-title">
+        <h3>Pattern</h3>
+      </div>
+      <div class="container">
+        <div style="flex-grow: 1">
+          <canvas id="pattern" width="478" height="292">
+          </canvas>
+        </div>
+        <div style="flex-grow: 1">
+            <pre class="description"><code class="javascript">
+    var canvas = document.getElementById("pattern");
+    var ctx = canvas.getContext("2d");
+
+    var img = new Image();
+    img.src = "img/pattern.jpg";
+    img.onload = function() {
+      ctx.fillStyle = ctx.createPattern(img, "repeat");
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+            </code></pre>
+        </div>
+      </div>
+    </section>
+
   </main>
   <footer>
   </footer>
