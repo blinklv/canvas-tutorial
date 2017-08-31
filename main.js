@@ -276,6 +276,61 @@
     ctx.fillRect(x, y, 200, 200);
     ctx.strokeRect(x + 50, y + 50, 100, 100);
   }) ();
+
+  // Radial Gradient
+  (function() {
+    var canvas = document.getElementById("radial-gradient");
+    var ctx = canvas.getContext("2d");
+    var [x, y] = [(canvas.width - 200) / 2, (canvas.height - 200) / 2];
+
+    function auxRadialGrad(x1, y1, r1, x2, y2, r2) {
+      ctx.strokeStyle = "black";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(x + x1, y + y1, r1, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(x + x2, y + y2, r2, 0, 2 * Math.PI);
+      ctx.stroke();
+    }
+
+    var radGrad1 = ctx.createRadialGradient(x + 45, y + 45, 10, x + 52, y + 50, 30);
+    radGrad1.addColorStop(0, '#A7D30C');
+    radGrad1.addColorStop(0.9, '#019F62');
+    radGrad1.addColorStop(1, 'rgba(1, 159, 98, 0)');
+
+    var radGrad2 = ctx.createRadialGradient(x + 105, y + 105, 20, x + 112, y + 120, 50);
+    radGrad2.addColorStop(0, '#FF5F98');
+    radGrad2.addColorStop(0.75, '#FF0188');
+    radGrad2.addColorStop(1, 'rgba(255, 1, 136, 0)');
+
+    var radGrad3 = ctx.createRadialGradient(x + 95, y + 15, 15, x + 102, y + 20, 40);
+    radGrad3.addColorStop(0, '#00C9FF');
+    radGrad3.addColorStop(0.8, '#00B5E2');
+    radGrad3.addColorStop(1, 'rgba(0, 201, 255, 0)');
+
+    var radGrad4 = ctx.createRadialGradient(x, y + 150, 50, x, y + 140, 90);
+    radGrad4.addColorStop(0, '#F4F201');
+    radGrad4.addColorStop(0.8, '#E4C700');
+    radGrad4.addColorStop(1, 'rgba(228, 199, 0, 0)');
+
+    ctx.fillStyle = radGrad1;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = radGrad2;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = radGrad3;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = radGrad4;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    auxRadialGrad(45, 45, 10, 52, 50, 30);
+    auxRadialGrad(105, 105, 20, 112, 120, 50);
+    auxRadialGrad(95, 15, 15, 102, 20, 40);
+    auxRadialGrad(0, 150, 50, 0, 140, 90);
+  }) ();
   
 })();
 
