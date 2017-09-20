@@ -435,6 +435,55 @@
     ctx.restore();
     ctx.fillRect(ox + 60, oy + 60, 30, 30);
   })();
+
+  // Nine Squares
+  (function() {
+    var canvas = document.getElementById("nine-squares");
+    var ctx = canvas.getContext("2d");
+    var [ox, oy] = [(canvas.width - 145) / 2, (canvas.height - 145) / 2];
+    ctx.translate(ox, oy);
+
+    for ( let i = 0; i < 3; ++i ) {
+      for ( let j = 0; j < 3; ++j ) { 
+        ctx.save();
+        ctx.fillStyle = 'rgb(' + (51 * i) + ', ' + (255 - 51 * i) + ', 255)';
+        ctx.translate(10 + j * 50, 10 + i * 50);
+        ctx.fillRect(0, 0, 25, 25);
+        ctx.restore();
+      }
+    }
+  })();
+
+  // Rotate Square
+  (function() {
+    var canvas = document.getElementById("rotate-square");
+    var ctx = canvas.getContext("2d");
+    var [ox, oy] = [(canvas.width - 310) / 2, (canvas.height - 150) / 2];
+    ctx.translate(ox, oy);
+
+    ctx.save();
+    // blue rect
+    ctx.fillStyle = "#0095DD";
+    ctx.fillRect(0, 0, 150, 150);
+
+    ctx.save();
+    // grey rect
+    ctx.rotate((Math.PI / 180) * 25);
+    ctx.fillStyle = "#4D4E53";
+    ctx.fillRect(0, 0, 150, 150);
+
+    ctx.restore();
+    // right blue rect
+    ctx.fillRect(160, 0, 150, 150);
+
+    ctx.save();
+    // right grey rect
+    ctx.translate(235, 75);
+    ctx.rotate((Math.PI / 180) * 25);
+    ctx.translate(-235, -75);
+    ctx.fillStyle = "#4D4E53";
+    ctx.fillRect(160, 0, 150, 150);
+  })();
 })();
 
 
