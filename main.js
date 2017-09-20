@@ -484,6 +484,27 @@
     ctx.fillStyle = "#4D4E53";
     ctx.fillRect(160, 0, 150, 150);
   })();
+
+  (function() {
+    var canvas = document.getElementById("reflection");
+    var ctx = canvas.getContext("2d");
+
+    ctx.font = "48px monospace";
+    var blinklv = ctx.measureText("blinklv");
+    var [ox, oy] = [(canvas.width - blinklv.width) / 2, (canvas.height - 48 * 2 - 5) / 2];
+
+    ctx.translate(ox, oy);
+    ctx.fillText("blinklv", 0, 48);
+
+    ctx.scale(1, -1);
+    var gd = ctx.createLinearGradient(0, -48 - 5, 0, -48 - 5 - 48);
+    gd.addColorStop(0, "#777");
+    gd.addColorStop(1, "white");
+    ctx.fillStyle = gd;
+    ctx.fillText("blinklv", 0, -48 - 5);
+
+  }) ();
+
 })();
 
 
