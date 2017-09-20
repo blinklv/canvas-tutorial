@@ -3,7 +3,7 @@
 // Author: blinklv <blinklv@icloud.com>
 // Create Time: 2017-08-18
 // Maintainer: blinklv <blinklv@icloud.com>
-// Last Change: 2017-08-31
+// Last Change: 2017-09-20
 
 (function() {
   hljs.initHighlightingOnLoad();
@@ -411,6 +411,30 @@
       });
     };
   }) ();
+
+  // Clolor Nested Square
+  (function() {
+    var canvas = document.getElementById("colorful-nested-square");
+    var ctx = canvas.getContext("2d");
+    var [ox, oy] = [(canvas.width - 150) / 2, (canvas.height - 150) / 2];
+
+    ctx.fillRect(ox, oy, 150, 150);
+    ctx.save();
+
+    ctx.fillStyle = "#09F";
+    ctx.fillRect(ox + 15, oy + 15, 120, 120);
+
+    ctx.save();
+    ctx.fillStyle = "#FFF";
+    ctx.globalAlpha = 0.5;
+    ctx.fillRect(ox + 30, oy + 30, 90, 90);
+    
+    ctx.restore();
+    ctx.fillRect(ox + 45, oy + 45, 60, 60);
+
+    ctx.restore();
+    ctx.fillRect(ox + 60, oy + 60, 30, 30);
+  })();
 })();
 
 
