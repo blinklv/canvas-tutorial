@@ -781,6 +781,36 @@
         </div>
       </div>
     </section>
+
+    <section class="note">
+      <div class="sub-title">
+        <h3>Flower</h3>
+      </div>
+      <div class="container">
+        <div style="flex-grow: 1">
+          <canvas id="flower" width="478" height="292">
+            Flower
+          </canvas>
+        </div>
+        <div style="flex-grow: 1">
+            <pre class="description"><code class="javascript">
+    var canvas = document.getElementById("flower");
+    var ctx = canvas.getContext("2d");
+    var [ox, oy] = [(canvas.width - 200) / 2, (canvas.height - 200) / 2];
+    ctx.transform(1, 0, 0, 1, ox + 100, oy + 100);
+
+    var [sin, cos] = [Math.sin(Math.PI / 6), Math.cos(Math.PI / 6)];
+    for ( let i = 0; i <= 12; ++i ) {
+      var c = Math.floor(255 / 12 * i);
+      ctx.fillStyle = 'rgb(' + c + ', ' + c + ', ' + c + ')';
+      ctx.fillRect(0, 0, 100, 10);
+      ctx.transform(cos, sin, -sin, cos, 0, 0);
+    }
+            </code></pre>
+        </div>
+      </div>
+    </section>
+
   </main>
   <footer>
   </footer>

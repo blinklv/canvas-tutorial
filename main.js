@@ -3,7 +3,7 @@
 // Author: blinklv <blinklv@icloud.com>
 // Create Time: 2017-08-18
 // Maintainer: blinklv <blinklv@icloud.com>
-// Last Change: 2017-09-20
+// Last Change: 2017-09-22
 
 (function() {
   hljs.initHighlightingOnLoad();
@@ -485,6 +485,7 @@
     ctx.fillRect(160, 0, 150, 150);
   })();
 
+  // Reflection
   (function() {
     var canvas = document.getElementById("reflection");
     var ctx = canvas.getContext("2d");
@@ -503,6 +504,22 @@
     ctx.fillStyle = gd;
     ctx.fillText("blinklv", 0, -48 - 5);
 
+  }) ();
+
+  // Flower
+  (function() {
+    var canvas = document.getElementById("flower");
+    var ctx = canvas.getContext("2d");
+    var [ox, oy] = [(canvas.width - 200) / 2, (canvas.height - 200) / 2];
+    ctx.transform(1, 0, 0, 1, ox + 100, oy + 100);
+
+    var [sin, cos] = [Math.sin(Math.PI / 6), Math.cos(Math.PI / 6)];
+    for ( let i = 0; i <= 12; ++i ) {
+      var c = Math.floor(255 / 12 * i);
+      ctx.fillStyle = 'rgb(' + c + ', ' + c + ', ' + c + ')';
+      ctx.fillRect(0, 0, 100, 10);
+      ctx.transform(cos, sin, -sin, cos, 0, 0);
+    }
   }) ();
 
 })();
