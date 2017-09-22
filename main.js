@@ -522,6 +522,56 @@
     }
   }) ();
 
+  // Starry Sky
+  (function() {
+    function drawStar(ctx, r) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.moveTo(r, 0);
+      for (var i = 0; i < 9; i++) {
+        ctx.rotate(Math.PI / 5);
+        if (i % 2 === 0) {
+          ctx.lineTo((r / 0.525731) * 0.200811, 0);
+        } else {
+          ctx.lineTo(r, 0);
+        }
+      }
+      ctx.closePath();
+      ctx.fill();
+      ctx.restore();
+    }
+
+    var canvas = document.getElementById("starry-sky");
+    var ctx = canvas.getContext("2d");
+    var [ox, oy] = [(canvas.width - 200) / 2, (canvas.height - 200) / 2];
+    ctx.translate(ox, oy);
+
+    ctx.fillRect(0, 0, 200, 200);
+    ctx.translate(100, 100);
+
+    ctx.beginPath();
+    ctx.arc(0, 0, 80, 0, 2 * Math.PI);
+    ctx.clip();
+    
+    // draw background
+    var gd = ctx.createLinearGradient(0, -100, 0, 100);
+    gd.addColorStop(0, '#232256');
+    gd.addColorStop(1, '#143778');
+
+    ctx.fillStyle = gd;
+    ctx.fillRect(-100, -100, 200, 200);
+
+    // draw stars
+    for ( let i = 0; i < 50; ++i ) {
+      ctx.save();
+      ctx.fillStyle = "#FFF";
+      ctx.translate(100 - Math.floor(Math.random() * 200),
+          100 - Math.floor(Math.random() * 200));
+      drawStar(ctx, Math.floor(Math.random() * 4) + 2);
+      ctx.restore();
+    }
+  }) ();
+
 })();
 
 
