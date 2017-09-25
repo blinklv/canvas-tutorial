@@ -3,7 +3,7 @@
 // Author: blinklv <blinklv@icloud.com>
 // Create Time: 2017-08-18
 // Maintainer: blinklv <blinklv@icloud.com>
-// Last Change: 2017-09-22
+// Last Change: 2017-09-25
 
 (function() {
   hljs.initHighlightingOnLoad();
@@ -569,6 +569,54 @@
           100 - Math.floor(Math.random() * 200));
       drawStar(ctx, Math.floor(Math.random() * 4) + 2);
       ctx.restore();
+    }
+  }) ();
+
+  // Solar System
+  (function() {
+    var canvas = document.getElementById("solar-system");
+    var ctx = canvas.getContext("2d");
+    var [ox, oy] = [(canvas.width - 300) / 2, (canvas.height - 300) / 2];
+    ctx.globalCompositeOperation = "destination-over";
+    ctx.translate(ox, oy);
+
+    var [sun, moon, earth] = [new Image(), new Image(), new Image()];
+    sun.src = "https://mdn.mozillademos.org/files/1456/Canvas_sun.png";
+    moon.src = "https://mdn.mozillademos.org/files/1443/Canvas_moon.png";
+    earth.src = "https://mdn.mozillademos.org/files/1429/Canvas_earth.png";
+    window.requestAnimationFrame(draw);
+
+    function draw() {
+      ctx.clearRect(0, 0, 300, 300);
+      ctx.fillStyle = "rgba(0, 0, 0, 0.4)";
+      ctx.strokeStyle = "rgba(0, 153, 255, 0.4)";
+
+      // Earth
+      ctx.save();
+      ctx.translate(150, 150);
+      
+      var time = new Date();
+      ctx.rotate(((2 * Math.PI) / 60) * time.getSeconds() + ((2 * Math.PI) / 60000) * time.getMilliseconds());
+      ctx.translate(105, 0);
+      ctx.fillRect(0, -12, 35, 24); // Shadow
+      ctx.drawImage(earth, -12, -12);
+
+      // Moon
+      ctx.save();
+      ctx.rotate(((2 * Math.PI) / 6) * time.getSeconds() + ((2 * Math.PI) / 6000) * time.getMilliseconds());
+      ctx.translate(0, 28.5);
+      ctx.drawImage(moon, -3.5, -3.5);
+
+      ctx.restore();
+      ctx.restore();
+
+      ctx.beginPath();
+      ctx.arc(150, 150, 105, 0, Math.PI * 2, false); // Earth orbit
+      ctx.stroke();
+
+      ctx.drawImage(sun, 0, 0, 300, 300);
+
+      window.requestAnimationFrame(draw);
     }
   }) ();
 
