@@ -3,7 +3,7 @@
 // Author: blinklv <blinklv@icloud.com>
 // Create Time: 2017-08-18
 // Maintainer: blinklv <blinklv@icloud.com>
-// Last Change: 2017-09-25
+// Last Change: 2017-09-27
 
 (function() {
   hljs.initHighlightingOnLoad();
@@ -620,6 +620,62 @@
     }
   }) ();
 
+  // Ball
+  (function() {
+    var canvas = document.getElementById("ball");
+    var ctx = canvas.getContext("2d");
+    var ball = {
+      x: canvas.width / 2,
+      y: canvas.height / 2,
+      vx: 5,
+      vy: 5,
+      dx: 0,
+      dy: 0,
+      r: 25,
+      color: "blue",
+      draw: function() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+    };
+
+    function clear() {
+      ctx.fillStyle = "rgba(255, 255, 255, 0.3";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function draw() {
+      clear();
+      ball.draw();
+      ball.x += ball.dx;
+      ball.y += ball.dy;
+      window.requestAnimationFrame(draw);
+    }
+
+    canvas.addEventListener("keydown", (e) => {
+      e.preventDefault();
+      switch (e.key) {
+        case "ArrowDown": ball.dy = ball.dy > 0 ? ball.dy : ball.vy; break;
+        case "ArrowUp": ball.dy = ball.dy < 0 ? ball.dy : -ball.vy; break;
+        case  "ArrowLeft": ball.dx = ball.dx < 0 ? ball.dx : -ball.vx; break;
+        case "ArrowRight": ball.dx = ball.dx > 0 ? ball.dx : ball.vx; break;
+      }
+    }, false);
+
+    canvas.addEventListener("keyup", (e) => {
+      e.preventDefault();
+      switch (e.key) {
+        case "ArrowDown": ball.dy = 0; break;
+        case "ArrowUp": ball.dy = 0; break;
+        case  "ArrowLeft": ball.dx = 0; break;
+        case "ArrowRight": ball.dx = 0; break;
+      }
+    }, false);
+
+    draw();
+  })();
 })();
 
 
