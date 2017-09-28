@@ -939,62 +939,80 @@
         <h3>Ball</h3>
       </div>
       <div class="container">
-        <div style="flex-grow: 1">
+        <div style="flex-grow: 1;">
           <canvas id="ball" width="478" height="292" tabindex="1">
-            Ball
+            Blue Ball
           </canvas>
         </div>
         <div style="flex-grow: 1">
             <pre class="description"><code class="javascript">
     var canvas = document.getElementById("ball");
-    var ctx = canvas.getContext("2d");
-    var ball = {
-      x: canvas.width / 2,
-      y: canvas.height / 2,
-      vx: 5,
-      vy: 5,
-      dx: 0,
-      dy: 0,
-      r: 25,
-      color: "blue",
-      draw: function() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        ctx.fill();
-      }
-    };
+    var [blueBall, redBall] = [new Ball(canvas, "blue"), new Ball(canvas, "red")];
 
-    function clear() {
-      ctx.fillStyle = "rgba(255, 255, 255, 0.3";
+    function Ball(canvas, color) {
+      this.x = canvas.width / 2;
+      this.y = canvas.height / 2;
+      this.canvas = canvas;
+      this.ctx = canvas.getContext("2d");
+      [this.vx, this.vy, this.dx, this.dy, this.r, this.color] = [5, 5, 0, 0, 25, color];
+    }
+
+    Ball.prototype.draw = function() {
+      this.ctx.beginPath();
+      this.ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+      this.ctx.fillStyle = this.color;
+      this.ctx.fill();
+    }
+
+    Ball.prototype.move = function() {
+      this.x += this.dx;
+      this.y += this.dy;
+    }
+
+    redBall.move = function() {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      if (this.y + this.vy > this.canvas.height || this.y + this.vy < 0) {
+        this.vy = -this.vy;
+      }
+      if (this.x + this.vx > this.canvas.width || this.x + this.vx < 0) {
+        this.vx = -this.vx;
+      }
+    }
+
+    function clear(canvas) {
+      var ctx = canvas.getContext("2d");
+      ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
     function draw() {
-      clear();
-      ball.draw();
-      ball.x += ball.dx;
-      ball.y += ball.dy;
+      clear(canvas);
+      redBall.move();
+      redBall.draw();
+      blueBall.move();
+      blueBall.draw();
       window.requestAnimationFrame(draw);
     }
 
     canvas.addEventListener("keydown", (e) => {
       e.preventDefault();
       switch (e.key) {
-        case "ArrowDown": ball.dy = ball.dy > 0 ? ball.dy : ball.vy; break;
-        case "ArrowUp": ball.dy = ball.dy < 0 ? ball.dy : -ball.vy; break;
-        case  "ArrowLeft": ball.dx = ball.dx < 0 ? ball.dx : -ball.vx; break;
-        case "ArrowRight": ball.dx = ball.dx > 0 ? ball.dx : ball.vx; break;
+        case "ArrowDown": blueBall.dy = blueBall.dy > 0 ? blueBall.dy : blueBall.vy; break;
+        case "ArrowUp": blueBall.dy = blueBall.dy < 0 ? blueBall.dy : -blueBall.vy; break;
+        case  "ArrowLeft": blueBall.dx = blueBall.dx < 0 ? blueBall.dx : -blueBall.vx; break;
+        case "ArrowRight": blueBall.dx = blueBall.dx > 0 ? blueBall.dx : blueBall.vx; break;
       }
     }, false);
 
     canvas.addEventListener("keyup", (e) => {
       e.preventDefault();
       switch (e.key) {
-        case "ArrowDown": ball.dy = 0; break;
-        case "ArrowUp": ball.dy = 0; break;
-        case  "ArrowLeft": ball.dx = 0; break;
-        case "ArrowRight": ball.dx = 0; break;
+        case "ArrowDown": blueBall.dy = 0; break;
+        case "ArrowUp": blueBall.dy = 0; break;
+        case  "ArrowLeft": blueBall.dx = 0; break;
+        case "ArrowRight": blueBall.dx = 0; break;
       }
     }, false);
 
