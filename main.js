@@ -3,7 +3,7 @@
 // Author: blinklv <blinklv@icloud.com>
 // Create Time: 2017-08-18
 // Maintainer: blinklv <blinklv@icloud.com>
-// Last Change: 2017-09-28
+// Last Change: 2017-10-12
 
 (function() {
   hljs.initHighlightingOnLoad();
@@ -694,6 +694,80 @@
 
     draw();
   })();
+
+  (function() {
+    var canvas = document.getElementById("bar-chart");
+    var ctx = canvas.getContext("2d");
+    
+    function Axis(data, interval, antiClockwise) {
+      this.data = data;
+      this.interval = interval;
+      this.antiClockwise = antiClockwise;
+    }
+
+    Axis.prototype.draw = function(ctx, point1, point2) {
+      var [x, y] = [point2[0] - point1[0], point2[1] - point1[1]];
+      var length = Math.sqrt(x * x + y * y);
+      var c = 1 / length;
+      
+      ctx.save();
+      // Cartesian coordinate.
+      if (!this.antiClockwise) {
+        ctx.transform(x * c, y * c, -y * c, x * c, point1[0], point1[1]);
+      } else {
+        ctx.transform(x * c, y * c, y * c, -x * c, point1[0], point1[1]);
+      }
+
+      ctx.strokeStyle = "black";
+      ctx.lineWidth = 2;
+      ctx.font = '12px serif'; 
+
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(length, 0);
+      ctx.lineTo(length - 5, 5);
+      ctx.moveTo(length, 0);
+      ctx.lineTo(length - 5, -5);
+
+      for (let [i, n] = [1, Math.floor(length / this.interval)]; i <= n; ++i ) {
+        ctx.moveTo(i * this.interval, 0);
+        ctx.lineTo(i * this.interval, 4);
+
+        if (this.data[i-1] != undefined) {
+          ctx.save();
+          var ox = i * this.interval - ctx.measureText("" + this.data[i-1]).width / 2;
+
+          if (!this.antiClockwise) {
+            ctx.fillText("" + this.data[i-1], ox, -15);
+          } else {
+            ctx.scale(1, -1);
+            ctx.fillText("" + this.data[i-1], ox, 15);
+          }
+
+          ctx.restore();
+        }
+      }
+
+      ctx.stroke();
+      ctx.restore();
+    }
+
+    var xaxis = new Axis(["Jan", "Feb", "Mar", "Apr", "May"], 50, true);
+    var yaxis = new Axis([10, 20, 30, 40, 50, 60, 70, 80, 90, 100], 20);
+
+    xaxis.draw(ctx, [50, 250], [420, 250]);
+    yaxis.draw(ctx, [50, 250], [50, 20]);
+
+    var data = [65, 35, 20, 70, 40];
+    var colors = ["blue", "red", "yellow", "green", "purple"];
+    
+    ctx.transform(1, 0, 0, -1, 50, 250);
+    for (let i = 0; i < data.length; ++i) {
+      ctx.fillStyle = colors[i];
+      ctx.fillRect((i+1) * 50 - 15, 0, 30, 2 * data[i]);
+    }
+
+  }) ();
 })();
 
 
