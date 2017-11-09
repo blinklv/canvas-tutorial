@@ -3,7 +3,7 @@
 // Author: blinklv <blinklv@icloud.com>
 // Create Time: 2017-08-18
 // Maintainer: blinklv <blinklv@icloud.com>
-// Last Change: 2017-10-12
+// Last Change: 2017-11-09
 
 (function() {
   hljs.initHighlightingOnLoad();
@@ -768,6 +768,65 @@
     }
 
   }) ();
+
+  (function() {
+    var canvas = document.getElementById("snow");
+    var ctx = canvas.getContext("2d");
+    var particles = [];
+    var tick = 0;
+
+    function create() {
+      if (tick % 10 == 0) {
+        if (particles.length < 150) {
+          particles.push({
+            x: Math.random() * canvas.width,
+            y: 0,
+            speed: 1 + Math.random() * 2,
+            radius: 3 + Math.random() * 2,
+            color: "white"
+          })
+        }
+      }
+    }
+
+    function update() {
+      for (p of particles) {
+        p.y += p.speed;
+      }
+    }
+
+    function kill() {
+      for (p of particles) {
+        if (p.y > canvas.height) {
+          p.y = 0;
+        }
+      }
+    }
+
+    function draw() {
+      ctx.fillStyle = "black";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      for (p of particles) {
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, 2 * Math.PI);
+        ctx.closePath();
+        ctx.fillStyle = p.color;
+        ctx.fill();
+      }
+    }
+
+    function loop() {
+      create();
+      update();
+      kill();
+      draw();
+      ++tick;
+      window.requestAnimationFrame(loop);
+    }
+
+    window.requestAnimationFrame(loop);
+  }) ();
+
 })();
 
 
